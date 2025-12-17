@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Result</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    // if user did not input data redirect to a form page
+    if (!params.has('bmi') || !params.has('category')) {
+      window.location.href = '/';
+    }
+  </script>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <h1>BMI Calculator</h1>
+    <p>Your result</p>
+  </header>
+
+  <main class="card">
+    <div class="result-block">
+      <p class="line">Your BMI: <strong id="bmi"></strong></p>
+      <p class="line" id="category"></p>
+
+      <hr class="sep" />
+
+      <p class="line">Fat index: <span id="fat"></span></p>
+      <p class="line">Muscle power: <span id="muscle"></span></p>
+
+      <hr class="sep" />
+
+      <p class="line"><strong>Recommendation:</strong></p>
+      <p class="recommendation" id="rec"></p>
+    </div>
+
+    <a href="/" class="btn">Back</a>
+  </main>
+
+  <footer class="footer">
+    <p>yessencee</p>
+  </footer>
+
+</div>
+
+<script>
+
+  document.getElementById('bmi').textContent = params.get('bmi');
+  document.getElementById('fat').textContent = params.get('fat') || 'N/A';
+  document.getElementById('muscle').textContent = params.get('muscle') || 'N/A';
+  document.getElementById('rec').textContent = params.get('rec') || '';
+
+  const category = params.get('category');
+  const color = params.get('color') || 'black';
+
+  const categoryEl = document.getElementById('category');
+  categoryEl.textContent = 'Category: ' + category;
+  categoryEl.style.color = color;
+</script>
+</body>
+</html>

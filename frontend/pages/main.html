@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <h1>BMI Calculator</h1>
+    <p>Enter your data</p>
+  </header>
+
+  <main class="card">
+    <p id="error" class="error"></p>
+
+    <form id="bmiForm" action="/calculate-bmi" method="POST" class="form">
+      <label>
+        Weight (kg) <span class="req">*</span>
+        <input id="weight" type="number" step="0.1" name="weight" required />
+      </label>
+
+      <label>
+        Height (cm) <span class="req">*</span>
+        <input id="height" type="number" step="0.1" name="height" required />
+      </label>
+
+      <label>
+        Fat density
+        <input id="fatDensity" type="number" step="0.1" name="fatDensity" />
+      </label>
+
+      <label>
+        Muscle index
+        <input id="muscleIndex" type="number" step="0.1" name="muscleIndex" />
+      </label>
+
+      <button type="submit">Calculate</button>
+    </form>
+
+    <p class="hint">Fields with <span class="req">*</span> are required.</p>
+  </main>
+
+  <footer class="footer">
+    <p>yessencee</p>
+  </footer>
+
+</div>
+
+<script>
+  const form = document.getElementById('bmiForm');
+  const errorEl = document.getElementById('error');
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+  }
+
+  function clearError() {
+    errorEl.textContent = '';
+  }
+
+  // form validation before send
+  form.addEventListener('submit', (e) => {
+    clearError();
+
+    const weight = Number(document.getElementById('weight').value);
+    const height = Number(document.getElementById('height').value);
+
+    const fat = document.getElementById('fatDensity').value.trim();
+    const muscle = document.getElementById('muscleIndex').value.trim();
+
+    if (!(weight > 0) || !(height > 0)) {
+      e.preventDefault();
+      showError('Weight and height must be positive numbers');
+      return;
+    }
+
+    if (fat !== '' && !(Number(fat) > 0)) {
+      e.preventDefault();
+      showError('Fat density must be a positive number');
+      return;
+    }
+
+    if (muscle !== '' && !(Number(muscle) > 0)) {
+      e.preventDefault();
+      showError('Muscle index must be a positive number');
+      return;
+    }
+  });
+
+  // clear error message when typing again
+  ['weight', 'height', 'fatDensity', 'muscleIndex'].forEach(id => {
+    document.getElementById(id).addEventListener('input', clearError);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.card {
+    width: 420px;
+    height: 420px;
+    background: white;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-size: 14px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+button,
+.btn {
+    margin-top: 10px;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.recommendation {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.line {
+    margin: 6px 0;
+}
+
+.sep {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+.error {
+    color: #dc2626;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.req {
+    color: #dc2626;
+}
+
+.hint {
+    margin-top: 10px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
